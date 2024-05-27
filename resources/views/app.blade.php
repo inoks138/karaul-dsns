@@ -7,7 +7,6 @@
         <title>Laravel</title>
 
         <link href="/css/app.css" rel="stylesheet">
-
         <!-- Fonts -->
 
         <!-- Styles -->

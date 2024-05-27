@@ -1,0 +1,14 @@
+// Bootstrap
+@import '~bootstrap/dist/css/bootstrap.css';
+
+.invalid-feedback_invisible {
+    display: block !important;
+    visibility: hidden !important;
+    min-height: 21px;
+}
+
+.is-invalid {
+    ~ .invalid-feedback_invisible {
+        visibility: visible !important;
+    }
+}

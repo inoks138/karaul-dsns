@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,5 +13,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::view('/login', 'app')->name('login');
+Route::post('/login', [AuthController::class, 'login']);
 
-Route::view('/', 'app');
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/auth/user', [AuthController::class, 'getCurrentUserData']);
+    Route::view('/', 'app');
+});
+

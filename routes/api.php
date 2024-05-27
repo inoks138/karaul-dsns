@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/auth', function () {
+        return 'User is authorized';
+    });
+});
+
+Route::get('test', function () {
+   return \Illuminate\Support\Facades\Hash::make('12345678');
 });
