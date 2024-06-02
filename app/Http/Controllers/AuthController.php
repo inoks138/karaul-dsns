@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Api\Auth\LoginRequest;
+use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,7 @@ class AuthController extends Controller
             ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
-        $user = auth()->user();
+        $user = $this->getUser();
 
         $request->session()->regenerate();
 
@@ -42,9 +43,17 @@ class AuthController extends Controller
 
     public function getCurrentUserData(): JsonResponse
     {
-        $user = auth()->user();
+        $user = $this->getUser();
 
         return response()->json($user);
+    }
+
+    private function getUser(): ?User
+    {
+        return User::query()
+            ->with(['role', 'employee'])
+            ->where('id', auth()->id())
+            ->first();
     }
 
 //    public function register(StoreUserRequest $request): JsonResponse

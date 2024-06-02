@@ -1,6 +1,6 @@
 <template>
     <MainLayout>
-        <div class="d-flex justify-content-center py-5">
+        <div class="d-flex justify-content-center">
             <div class="card login-card">
                 <div class="card-body">
                     <form class="login-form">

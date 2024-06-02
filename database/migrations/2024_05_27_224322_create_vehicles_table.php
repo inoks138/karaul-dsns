@@ -1,0 +1,39 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('vehicles', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedInteger('vehicle_model_id');
+            $table->unsignedInteger('firehouse_id');
+            $table->string('license_plate');
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('vehicle_model_id')
+                ->references('id')
+                ->on('vehicle_models');
+
+            $table->foreign('firehouse_id')
+                ->references('id')
+                ->on('firehouses');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('vehicles');
+    }
+};

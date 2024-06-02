@@ -1,39 +1,63 @@
 <template>
     <div>
-        <router-view />
-        <v-page-loader-modal :show="getIsLoadingUserInfo"/>
+        <v-page-loader-modal v-if="!getIsLoadedUserInfo && !isLoginRoute"/>
+        <router-view v-else/>
     </div>
 </template>
 
 <script>
 import VPageLoaderModal from "./components/VPageLoaderModal.vue";
 import {mapGetters} from "vuex";
+import {getCurrentGuard} from "./api/guardService";
 
 export default {
     name: "App",
     components: {VPageLoaderModal},
     computed: {
         ...mapGetters([
-            "getIsLoadingUserInfo",
+            "getIsLoadedUserInfo",
+            "getIsLoadedGuard",
         ]),
+        isLoginRoute() {
+            return this.$route.name === 'login';
+        },
+        showPageLoader() {
+            return !this.getIsLoadedUserInfo || !this.getIsLoadedGuard || this.isLoginRoute;
+        }
     },
     mounted() {
         this.fetchUserInfo();
+        this.fetchGuard();
     },
     methods: {
         fetchUserInfo() {
-            this.setIsLoadingUserInfo(true);
-
             this.$store.dispatch("getUserInfo")
                 .then((response) => {
                     this.$store.commit("setUserInfo", response.data);
                 })
+                .catch((error) => {
+                    if (error.response.status === 401) {
+                        this.$store.commit("setUserToken", "")
+                    }
+                })
                 .finally(() => {
-                    this.setIsLoadingUserInfo(false);
+                    this.setIsLoadedUserInfo(true);
                 });
         },
-        setIsLoadingUserInfo(value) {
-            this.$store.commit("setIsLoadingUserInfo", value);
+        fetchGuard() {
+            getCurrentGuard()
+                .then((response) => {
+                    this.$store.commit("setGuard", response.data);
+                })
+                .finally(() => {
+                    this.setIsLoadedGuard(true);
+                });
+        },
+        setIsLoadedUserInfo(value) {
+            this.$store.commit("setIsLoadedUserInfo", value);
+        },
+        setIsLoadedGuard(value) {
+            this.$store.commit("setIsLoadedGuard", value);
         },
     }
 }

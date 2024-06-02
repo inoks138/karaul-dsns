@@ -1,5 +1,7 @@
 // Bootstrap
 @import '~bootstrap/dist/css/bootstrap.css';
+@import 'vue2-timepicker/dist/VueTimepicker.css';
+@import 'vue-select/dist/vue-select.css';
 
 .invalid-feedback_invisible {
     display: block !important;
@@ -8,7 +10,34 @@
 }
 
 .is-invalid {
-    ~ .invalid-feedback_invisible {
+    ~ .invalid-feedback_invisible, .invalid-feedback_invisible {
         visibility: visible !important;
     }
+}
+
+.v-select.form-control {
+    padding: 0;
+
+    .vs__dropdown-toggle {
+        border: none !important;
+    }
+}
+
+.v-select.form-control.vs--open {
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.vue__time-picker {
+    .form-control ~ .controls .char{
+        margin-top: 1px;
+    }
+
+    .form-control.is-invalid {
+        border-color: #dc3545 !important;
+    }
+}
+
+.justify-self-end {
+    justify-self: end;
 }

@@ -1,14 +1,14 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-5">
         <component :is="isUserLogged ? 'router-link' : 'span'"
             to="/"
-            class="navbar-brand"
+            class="navbar-brand p-0"
         >
             <img
                 src="/img/dsns-logo.png"
                 alt="dsns-logo"
-                width="50px"
-                height="50px"
+                width="44px"
+                height="44px"
             >
         </component>
 
@@ -57,7 +57,6 @@ export default {
         logout() {
             this.$store.dispatch("logout")
                 .then(() => {
-                    console.log('Logout!');
                     this.$store.dispatch("resetUser");
 
                     this.$router.push('/login');

@@ -26,5 +26,10 @@
         "vue-template-compiler": "^2.6.14",
         "vuex": "^3.6.2"
     },
-    "dependencies": {}
+    "dependencies": {
+        "moment": "^2.30.1",
+        "moment-timezone": "^0.5.45",
+        "vue-select": "^3.20.3",
+        "vue2-timepicker": "^1.1.6"
+    }
 }

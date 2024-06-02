@@ -1,7 +1,9 @@
 <template>
     <div>
         <Navbar/>
-        <slot/>
+        <div class="main-layout__content-wrap bg-light">
+            <slot />
+        </div>
     </div>
 </template>
 
@@ -15,5 +17,7 @@ export default {
 </script>
 
 <style scoped>
-
+.main-layout__content-wrap {
+    min-height: 100vh;
+}
 </style>

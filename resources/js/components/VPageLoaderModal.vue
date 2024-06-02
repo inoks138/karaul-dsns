@@ -1,5 +1,5 @@
 <template>
-    <v-modal :show="show">
+    <v-modal :show="true">
         <div class="spinner-border text-primary v-page-loader__spinner" role="status" />
     </v-modal>
 </template>
@@ -10,12 +10,6 @@ import VModal from "./common/modal/VModal.vue";
 
 export default {
     name: "VPageLoaderModal",
-    props: {
-        show: {
-            type: Boolean,
-            required: true,
-        },
-    },
     components: {VModal},
 }
 </script>

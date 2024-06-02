@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\Employee\EmployeeController;
+use App\Http\Controllers\Api\Guard\GuardController;
+use App\Http\Controllers\Api\Vehicle\VehicleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,6 +20,17 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/auth', function () {
         return 'User is authorized';
+    });
+    Route::prefix('employees')->group(function() {
+       Route::get('/', [EmployeeController::class, 'getEmployees']);
+    });
+    Route::prefix('vehicles')->group(function() {
+        Route::get('/', [VehicleController::class, 'getVehicles']);
+    });
+    Route::prefix('guards')->group(function() {
+        Route::post('/{guard}/create-units', [GuardController::class, 'createUnits']);
+        Route::get('/current', [GuardController::class, 'getCurrentGuard']);
+        Route::post('/', [GuardController::class, 'startGuard']);
     });
 });
 

@@ -1,40 +1,55 @@
-import axios from "axios";
-
-const LOCAL_STORAGE_USER_TOKEN_KEY = 'user_token'
+const LOCAL_STORAGE_USER_TOKEN_KEY = 'user_token';
 
 export default {
     namespaced: false,
 
     state: {
         user: {
-            token: JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER_TOKEN_KEY)) ?? "",
+            token: localStorage.getItem(LOCAL_STORAGE_USER_TOKEN_KEY) ?? "",
+            id: null,
             name: "",
-            role: "",
+            role: {},
+            employee: {},
         },
-        IsLoadingUserInfo: false,
+        isLoadedUserInfo: false,
+        guard: {
+            id: null,
+            startTime: null,
+        },
+        isLoadedGuard: false,
     },
 
     mutations: {
         setUserToken(state, token) {
-            localStorage.setItem(
-                LOCAL_STORAGE_USER_TOKEN_KEY,
-                JSON.stringify(token)
-            )
+            localStorage.setItem(LOCAL_STORAGE_USER_TOKEN_KEY, token);
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
             state.user.token = token;
         },
         setUserInfo(state, userInfo) {
+            state.user.id = userInfo.id;
             state.user.name = userInfo.name;
             state.user.role = userInfo.role;
+            state.user.employee = userInfo.employee;
         },
-        setIsLoadingUserInfo(state, value) {
-            state.IsLoadingUserInfo = value;
+        setIsLoadedUserInfo(state, value) {
+            state.isLoadedUserInfo = value;
+        },
+        setGuard(state, guard) {
+            state.guard.id = guard.id;
+            state.guard.startTime = guard.start_time;
+        },
+        setIsLoadedGuard(state, value) {
+            state.isLoadedGuard = value;
         },
     },
 
     getters: {
-        getIsLoadingUserInfo(state) {
-            return state.IsLoadingUserInfo;
+        getIsLoadedUserInfo(state) {
+            return state.isLoadedUserInfo;
+        },
+        getIsLoadedGuard(state) {
+            return state.isLoadedGuard;
         },
     },
 
@@ -42,7 +57,7 @@ export default {
         login({}, payload) {
             return axios.post('/login', payload);
         },
-        getUserInfo({}) {
+        getUserInfo() {
             return axios.get('/auth/user');
         },
         logout() {

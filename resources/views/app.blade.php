@@ -7,6 +7,7 @@
         <title>Laravel</title>
 
         <link href="/css/app.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/0462d58a97.js" crossorigin="anonymous"></script>
         <!-- Fonts -->
 
         <!-- Styles -->
