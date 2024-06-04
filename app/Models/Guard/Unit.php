@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Unit extends Model
 {
-    use softDeletes;
+//    use softDeletes;
 
     protected $fillable = [
         'guard_id',

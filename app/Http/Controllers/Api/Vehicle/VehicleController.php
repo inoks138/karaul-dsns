@@ -22,4 +22,8 @@ class VehicleController extends ApiController
 
         return response()->json($data);
     }
+
+    public function getVehicleNoteStates(): JsonResponse{
+
+    }
 }

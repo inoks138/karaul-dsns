@@ -11,7 +11,7 @@
                             <input
                                 v-model="formData.email"
                                 class="form-control"
-                                :class="{'is-invalid': formErrors.password}"
+                                :class="{'is-invalid': formErrors.email}"
                             />
                             <div class="invalid-feedback invalid-feedback_invisible">
                                 {{ formErrors.email }}

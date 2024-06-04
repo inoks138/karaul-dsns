@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api\Guard;
 
 use App\Http\Controllers\Api\ApiController;
 use App\Http\Requests\Api\Guard\CreateUnitsRequest;
+use App\Http\Requests\Api\Guard\CreateVehicleNotesRequest;
+use App\Http\Requests\Api\Guard\EndGuardRequest;
 use App\Http\Requests\Api\Guard\StartGuardRequest;
 use App\Models\Guard\Guard;
 use App\Services\Guard\GuardService;
@@ -39,4 +41,33 @@ class GuardController extends ApiController
 
         return response()->json([], Response::HTTP_CREATED);
     }
+
+    public function createVehicleNotes(Guard $guard, CreateVehicleNotesRequest $request): JsonResponse
+    {
+        $this->guardService->createVehicleNotesForGuard($request->validated(), $guard);
+
+        return response()->json([], Response::HTTP_CREATED);
+    }
+
+    public function getInternalServiceTypes(): JsonResponse
+    {
+        $data = $this->guardService->getInternalServiceTypes();
+
+        return response()->json($data);
+    }
+
+    public function getEndGuardData(Guard $guard): JsonResponse
+    {
+        $data = $this->guardService->getEndGuardData($guard);
+
+        return response()->json($data);
+    }
+
+    public function endGuard(EndGuardRequest $request, Guard $guard): JsonResponse
+    {
+        $this->guardService->endGuard($request->validated(), $guard);
+
+        return response()->json([], Response::HTTP_NO_CONTENT);
+    }
+
 }

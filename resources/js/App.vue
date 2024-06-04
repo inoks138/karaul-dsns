@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-page-loader-modal v-if="!getIsLoadedUserInfo && !isLoginRoute"/>
+        <v-page-loader-modal v-if="showPageLoader"/>
         <router-view v-else/>
     </div>
 </template>
@@ -22,7 +22,7 @@ export default {
             return this.$route.name === 'login';
         },
         showPageLoader() {
-            return !this.getIsLoadedUserInfo || !this.getIsLoadedGuard || this.isLoginRoute;
+            return (!this.getIsLoadedUserInfo || !this.getIsLoadedGuard) && !this.isLoginRoute;
         }
     },
     mounted() {

@@ -6,3 +6,5 @@ export const EMPLOYEE_POSITIONS_FIREFIGHTER_ID = 4;
 export const VEHICLE_TYPE_GENERAL_ID = 1;
 export const VEHICLE_TYPE_LADDER_ID = 2;
 export const VEHICLE_TYPE_SUPPORT_ID = 3;
+
+export const VEHICLE_NOTE_STATE_OTHER = 5;

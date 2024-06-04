@@ -1,5 +1,6 @@
 // Bootstrap
 @import '~bootstrap/dist/css/bootstrap.css';
+@import 'vue2-datepicker/index.css';
 @import 'vue2-timepicker/dist/VueTimepicker.css';
 @import 'vue-select/dist/vue-select.css';
 
@@ -16,16 +17,17 @@
 }
 
 .v-select.form-control {
-    padding: 0;
+    min-height: 38px;
+    padding: 2px 0 0 0;
+
+    &.vs--open {
+        outline: 0;
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+    }
 
     .vs__dropdown-toggle {
         border: none !important;
     }
-}
-
-.v-select.form-control.vs--open {
-    outline: 0;
-    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
 .vue__time-picker {
@@ -33,11 +35,56 @@
         margin-top: 1px;
     }
 
+    .form-control {
+        min-height: 38px;
+        border: 1px solid #dee2e6 !important;
+
+        &.disabled {
+            background-color: #e9ecef !important;
+            color: #212529 !important;
+        }
+        &.is-invalid {
+            border-color: #dc3545 !important;
+        }
+    }
+
+    &.shrunk {
+        width: 80px;
+
+        .form-control {
+            width: 80px;
+        }
+
+        .clear-btn {
+            padding: 0 8px;
+        }
+    }
+
+    &.shrunk-md {
+        width: 120px;
+
+        .form-control {
+            width: 120px;
+        }
+
+        .clear-btn {
+            padding: 0 8px;
+        }
+    }
+}
+
+.mx-datepicker {
+    width: 140px;
+
     .form-control.is-invalid {
-        border-color: #dc3545 !important;
+        background-position: right calc(1.5em + 0.2rem) center !important;
     }
 }
 
 .justify-self-end {
     justify-self: end;
+}
+
+.mt-5px {
+    margin-top: 5px
 }

@@ -44,7 +44,7 @@
 <script>
 
 export default {
-    name: 'Navbar',
+    name: "Navbar",
     computed: {
         isUserLogged() {
             return !!this.$store.state.auth.user.token;
@@ -59,7 +59,7 @@ export default {
                 .then(() => {
                     this.$store.dispatch("resetUser");
 
-                    this.$router.push('/login');
+                    this.$router.push("/login");
                 });
         },
     },
