@@ -3,9 +3,9 @@
         <div class="d-flex justify-content-center">
             <div class="card document-card">
                 <div class="card-body">
-                    <h3 class="text-center mb-5">Книга служби</h3>
+                    <h3 class="text-center mb-5">Журнал пункту зв'язку</h3>
 
-                    <label class="form-label">Оберіть період, за який потріно сформувати Наряди на службу:</label>
+                    <label class="form-label">Оберіть період, за який потріно сформувати записи з Журналу пункту зв'язку:</label>
                     <v-datepicker
                         v-model="formData.date"
                         class="w-100"
@@ -45,7 +45,7 @@ import MainLayout from "../../layouts/MainLayout.vue";
 import {getFirehouses} from "../../api/workplaceService";
 
 export default {
-    name: "ServiceBookPage",
+    name: "VehicleLogBookPage",
     components: {MainLayout, VButton},
     data() {
         return {

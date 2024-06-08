@@ -2,7 +2,7 @@
     <div>
         <Navbar/>
         <div class="main-layout__content-wrap bg-light">
-            <slot v-if="isGuardChief || isLoginRoute"/>
+            <slot v-if="isGuardChief || isSecretary|| isLoginRoute"/>
             <dispatcher-view v-if="isDispatcher">
                 <slot/>
             </dispatcher-view>
@@ -12,7 +12,7 @@
 
 <script>
 import Navbar from "../components/Navbar.vue";
-import {ROLE_DISPATCHER_ID, ROLE_GUARD_CHIEF_ID} from "../settings";
+import {ROLE_DISPATCHER_ID, ROLE_GUARD_CHIEF_ID, ROLE_SECRETARY_ID} from "../settings";
 import DispatcherView from "../components/home/DispatcherView.vue";
 
 export default {
@@ -28,6 +28,9 @@ export default {
         isDispatcher() {
             return this.user.role.id === ROLE_DISPATCHER_ID;
         },
+        isSecretary() {
+            return this.user.role.id === ROLE_SECRETARY_ID;
+        },
         isLoginRoute() {
             return this.$route.name === 'login';
         },
@@ -38,5 +41,7 @@ export default {
 <style scoped>
 .main-layout__content-wrap {
     min-height: 89.9vh;
+    display: flex;
+    flex-direction: column;
 }
 </style>

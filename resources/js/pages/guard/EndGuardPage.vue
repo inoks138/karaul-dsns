@@ -123,7 +123,7 @@
 
                         <div class="mt-3">
                             <div class="d-flex justify-content-between mb-2">
-                                <h6 class="mt-2">3. Внутрішній наряд</h6>
+                                <h6 class="mt-2">2. Внутрішній наряд</h6>
                                 <v-button color="success" @click="addInternalService">
                                     Додати внутрішній наряд
                                 </v-button>
@@ -206,7 +206,7 @@
                         </div>
 
                         <div class="mt-3">
-                            <h6>4. Результати перевірки організації несення служби, оцінка дій чергового караулу</h6>
+                            <h6>3. Результати перевірки організації несення служби, оцінка дій чергового караулу</h6>
 
                             <textarea
                                 v-model="formData.serviceInspection"
@@ -216,7 +216,7 @@
                         </div>
 
                         <div class="mt-3">
-                            <h6>7. Несправності джерел протипожежного водопостачання, проїздів, доріг, засобів зв’язку в районі виїзду підрозділу</h6>
+                            <h6>4. Несправності джерел протипожежного водопостачання, проїздів, доріг, засобів зв’язку в районі виїзду підрозділу</h6>
 
                             <textarea
                                 v-model="formData.malfunctions"
@@ -227,7 +227,7 @@
 
                         <div class="mt-3">
                             <div class="d-flex justify-content-between mb-2">
-                                <h6 class="mt-2">8. Робота рукавів</h6>
+                                <h6 class="mt-2">5. Робота рукавів</h6>
                                 <v-button color="success" @click="addFireHoseUsage">
                                     Додати роботу рукавів
                                 </v-button>
@@ -270,7 +270,7 @@
                                     </div>
                                     <div class="form-outline pe-1">
                                         <div :class="{'is-invalid': item.formErrors.startTime}">
-                                            <label class="form-label mb-0 mt-1 me-1">Час заступання:</label>
+                                            <label class="form-label mb-0 mt-1 me-1">Час роботи:</label>
                                             <div class="d-flex">
                                                 <v-timepicker
                                                     v-model="item.startTime"

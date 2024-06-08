@@ -2,7 +2,7 @@
     <div class="d-flex justify-content-center">
         <div class="card home-page-card">
             <div class="card-body">
-                <h3 class="text-center mb-5">Звітність</h3>
+                <h3 class="text-center mb-5">Документи</h3>
 
                 <v-button
                     to="/documents/service-book"
@@ -12,14 +12,14 @@
                     Книга служби
                 </v-button>
                 <v-button
-                    to="/guard/create-units"
+                    to="/documents/vehicle-log-book"
                     class="w-100 mt-2"
                     color="primary"
                 >
                     Журнал стройових записок
                 </v-button>
                 <v-button
-                    to="/guard/create-vehicle-notes"
+                    to="/documents/dispatcher-log-book"
                     class="w-100 mt-2"
                     color="primary"
                 >
@@ -41,7 +41,7 @@ export default {
 
 <style scoped>
 .home-page-card {
-    width: 400px;
+    width: 450px;
     margin: 50px 0;
     padding: 15px 15px 30px 15px;
 }

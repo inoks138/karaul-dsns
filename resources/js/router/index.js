@@ -8,6 +8,8 @@ import CreateVehicleNotes from "../pages/guard/CreateVehicleNotes.vue";
 import EndGuardPage from "../pages/guard/EndGuardPage.vue";
 import EmergencyDetailPage from "../pages/emergency/EmergencyDetailPage.vue";
 import ServiceBookPage from "../pages/documents/ServiceBookPage.vue";
+import DispatcherLogBookPage from "../pages/documents/DispatcherLogBookPage.vue";
+import VehicleLogBookPage from "../pages/documents/VehicleLogBookPage.vue";
 
 Vue.use(VueRouter);
 
@@ -51,6 +53,16 @@ const routes = [
         path: '/documents/service-book',
         name: 'service_book',
         component: ServiceBookPage,
+    },
+    {
+        path: '/documents/vehicle-log-book',
+        name: 'service_book',
+        component: VehicleLogBookPage,
+    },
+    {
+        path: '/documents/dispatcher-log-book',
+        name: 'service_book',
+        component: DispatcherLogBookPage,
     },
 ];
 

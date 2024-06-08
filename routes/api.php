@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\Employee\EmployeeController;
 use App\Http\Controllers\Api\Guard\GuardController;
 use App\Http\Controllers\Api\Vehicle\VehicleController;
 use App\Http\Controllers\Api\Vehicle\VehicleNoteController;
+use App\Http\Controllers\Api\Workplace\WorkplaceController;
 use App\Models\Employee\EmployeePosition;
 use App\Models\Workplace\Detachment;
 use Illuminate\Http\Request;
@@ -59,6 +60,10 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/{emergency}/comments', [EmergencyController::class, 'getComments']);
         Route::post('/{emergency}/comments', [EmergencyController::class, 'storeComment']);
         Route::get('/types', [EmergencyController::class, 'getTypes']);
+    });
+
+    Route::prefix('workplaces')->group(function() {
+        Route::get('/firehouses', [WorkplaceController::class, 'getFirehouses']);
     });
 });
 

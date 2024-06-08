@@ -27,6 +27,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::view('/emergencies/{emergency}', 'app');
 
+    Route::view('/documents/service-book', 'app');
+    Route::view('/documents/vehicle-log-book', 'app');
+    Route::view('/documents/dispatcher-log-book', 'app');
+
     Route::view('/', 'app');
 });
 
