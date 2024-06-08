@@ -6,6 +6,8 @@ import StartGuardPage from "../pages/guard/StartGuardPage.vue";
 import CreateUnitsPage from "../pages/guard/CreateUnitsPage.vue";
 import CreateVehicleNotes from "../pages/guard/CreateVehicleNotes.vue";
 import EndGuardPage from "../pages/guard/EndGuardPage.vue";
+import EmergencyDetailPage from "../pages/emergency/EmergencyDetailPage.vue";
+import ServiceBookPage from "../pages/documents/ServiceBookPage.vue";
 
 Vue.use(VueRouter);
 
@@ -39,6 +41,16 @@ const routes = [
         path: '/guard/end',
         name: 'end_guard',
         component: EndGuardPage,
+    },
+    {
+        path: '/emergencies/:id',
+        name: 'emergency_detail',
+        component: EmergencyDetailPage,
+    },
+    {
+        path: '/documents/service-book',
+        name: 'service_book',
+        component: ServiceBookPage,
     },
 ];
 

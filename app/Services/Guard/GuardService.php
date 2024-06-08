@@ -57,6 +57,7 @@ class GuardService
         foreach ($unitsData as $unitData) {
             $unit = Unit::create([
                 'guard_id' => $guard->id,
+                'number' => $unitData['number'],
                 'commander_id' => $unitData['commander_id'],
                 'driver_id' => $unitData['driver_id'],
                 'vehicle_id' => $unitData['vehicle_id'],
@@ -134,5 +135,22 @@ class GuardService
     public function endGuard(array $data, Guard $guard): void
     {
 
+    }
+
+    public function getUnits(): Collection
+    {
+        $currentGuard = $this->getCurrentGuard();
+
+        return Unit::query()
+            ->where('guard_id', $currentGuard->id)
+            ->with([
+                'activeEmergencyLiquidation',
+                'activeEmergencyLiquidation.vehicle',
+                'activeEmergencyLiquidation.vehicle.model',
+                'activeEmergencyLiquidation.vehicle.model.type',
+                'activeEmergencyLiquidation.emergency',
+                'commander',
+            ])
+            ->get();
     }
 }

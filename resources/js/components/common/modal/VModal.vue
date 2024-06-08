@@ -1,9 +1,9 @@
 <template>
     <div class="modal" :class="{show}">
-        <div class="modal-dialog modal-dialog-centered justify-content-center" role="document">
+        <div class="modal-dialog modal-dialog-centered justify-content-center modal-lg" role="document">
             <slot/>
         </div>
-        <div class="modal-backdrop"></div>
+        <div class="modal-backdrop" @click="closeModal"></div>
     </div>
 </template>
 
@@ -17,6 +17,11 @@ export default {
             required: true,
         },
     },
+    methods: {
+        closeModal() {
+            this.$emit('closeModal');
+        },
+    },
 }
 </script>
 
@@ -26,7 +31,7 @@ export default {
 }
 .modal {
     .modal-backdrop {
-        opacity: 0.3;
+        opacity: 0.5;
     }
 
     .modal-dialog {

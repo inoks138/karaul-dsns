@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use Database\Seeders\Emergency\EmergencyTypeSeeder;
 use Database\Seeders\Employee\EmployeePositionSeeder;
 use Database\Seeders\Employee\EmployeeSeeder;
+use Database\Seeders\Guard\GuardInternalServiceTypeSeeder;
 use Database\Seeders\Vehicle\VehicleModelSeeder;
 use Database\Seeders\Vehicle\VehicleNoteStateSeeder;
 use Database\Seeders\Vehicle\VehicleSeeder;
@@ -31,6 +33,7 @@ class DatabaseSeeder extends Seeder
             VehicleSeeder::class,
             VehicleNoteStateSeeder::class,
             GuardInternalServiceTypeSeeder::class,
+            EmergencyTypeSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
         ]);

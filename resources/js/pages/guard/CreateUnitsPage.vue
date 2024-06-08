@@ -55,7 +55,6 @@
                                             :class="{'is-invalid': unit.formErrors.driver}"
                                         />
                                     </div>
-                                    <div class="is-invalid"></div>
                                     <div class="invalid-feedback invalid-feedback_invisible unit__invalid-feedback">
                                         {{ unit.formErrors.driver }}
                                     </div>
@@ -114,7 +113,7 @@
                                 :loading="isLoadingSubmit"
                                 @click="createUnits"
                             >
-                                Зберігти
+                                Зберегти
                             </v-button>
                         </div>
                     </div>

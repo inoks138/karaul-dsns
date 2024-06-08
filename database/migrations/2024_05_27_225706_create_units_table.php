@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('units', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('guard_id');
+            $table->unsignedInteger('number');
             $table->unsignedBigInteger('commander_id');
             $table->unsignedBigInteger('driver_id');
             $table->unsignedBigInteger('vehicle_id');
-            $table->unsignedBigInteger('guard_id');
             $table->timestamps();
 
             $table->foreign('commander_id')

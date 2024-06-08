@@ -1,61 +1,42 @@
 <template>
     <MainLayout>
-        <div class="d-flex justify-content-center">
-            <div class="card home-page-card">
-                <div class="card-body">
-                    <h3 class="text-center mb-5">Караульна служба</h3>
-
-                    <v-button
-                        to="/guard/start"
-                        class="w-100 mt-3"
-                        color="primary"
-                    >
-                        Почати караул
-                    </v-button>
-                    <v-button
-                        to="/guard/create-units"
-                        class="w-100 mt-2"
-                        color="primary"
-                    >
-                        Створити відділення
-                    </v-button>
-                    <v-button
-                        to="/guard/create-vehicle-notes"
-                        class="w-100 mt-2"
-                        color="primary"
-                    >
-                        Додати стройові записки
-                    </v-button>
-                    <v-button
-                        to="/guard/end"
-                        class="w-100 mt-2"
-                        color="primary"
-                    >
-                        Завершити караул
-                    </v-button>
-                </div>
-            </div>
-        </div>
+        <chief-guard-main v-if="isGuardChief"/>
+        <dispatcher-main v-else-if="isDispatcher"/>
+        <secretary-main v-else-if="isSecretary"/>
     </MainLayout>
 </template>
 
 <script>
 import MainLayout from "../layouts/MainLayout.vue";
-import VButton from "../components/common/VButton.vue";
+import ChiefGuardMain from "../components/home/ChiefGuardMain.vue";
+import DispatcherMain from "../components/home/DispatcherMain.vue";
+import {ROLE_DISPATCHER_ID, ROLE_GUARD_CHIEF_ID, ROLE_SECRETARY_ID} from "../settings";
+import SecretaryMain from "../components/home/SecretaryMain.vue";
 
 export default {
     name: "HomePage",
     components: {
+        SecretaryMain,
         MainLayout,
-        VButton,
+        ChiefGuardMain,
+        DispatcherMain,
+    },
+    computed: {
+        user() {
+            return this.$store.state.auth.user;
+        },
+        isGuardChief() {
+            return this.user.role.id === ROLE_GUARD_CHIEF_ID;
+        },
+        isDispatcher() {
+            return this.user.role.id === ROLE_DISPATCHER_ID;
+        },
+        isSecretary() {
+            return this.user.role.id === ROLE_SECRETARY_ID;
+        },
     },
 }
 </script>
 
 <style scoped lang="scss">
-.home-page-card {
-    width: 400px;
-    margin: 50px 0;
-    padding: 15px 15px 30px 15px;
-}
 </style>

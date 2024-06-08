@@ -95,6 +95,14 @@ class EmployeeSeeder extends Seeder
                 'workplace_type' => Firehouse::class,
                 'position_id' => EmployeePosition::getDispatcherId(),
             ],
+            [
+                'first_name' => 'Xyz-asd',
+                'last_name' => 'Dispatcher-asd',
+                'patronymic' => 'A',
+                'workplace_id' => 1,
+                'workplace_type' => Detachment::class,
+                'position_id' => EmployeePosition::getDispatcherId(),
+            ],
         ];
         $secretaries = [
             [

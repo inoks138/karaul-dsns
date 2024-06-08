@@ -23,6 +23,7 @@ class CreateUnitsRequest extends FormRequest
     {
         return [
             'units' => 'required|array',
+            'units.*.number' => 'required|int',
             'units.*.commander_id' => 'required|int|exists:employees,id',
             'units.*.driver_id' => 'required|int|exists:employees,id',
             'units.*.vehicle_id' => 'required|int|exists:vehicles,id',

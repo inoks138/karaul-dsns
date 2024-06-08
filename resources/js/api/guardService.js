@@ -25,3 +25,7 @@ export const getEndGuardData = (guardId) => {
 export const endGuard = (guardId, payload) => {
     return axios.post(`/api/guards/${guardId}/end-guard`, payload);
 }
+
+export const getUnits = () => {
+    return axios.get(`/api/guards/current/units`);
+}

@@ -25,6 +25,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::view('/guard/create-vehicle-notes', 'app');
     Route::view('/guard/end', 'app');
 
+    Route::view('/emergencies/{emergency}', 'app');
+
     Route::view('/', 'app');
 });
 

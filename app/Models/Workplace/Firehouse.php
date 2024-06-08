@@ -2,6 +2,7 @@
 
 namespace App\Models\Workplace;
 
+use App\Models\Emergency\Emergency;
 use App\Models\Employee\Employee;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -26,5 +27,10 @@ class Firehouse extends Model
     public function employees(): MorphMany
     {
         return $this->morphMany(Employee::class, 'workplace');
+    }
+
+    public function emergencies(): MorphMany
+    {
+        return $this->morphMany(Emergency::class, 'reporterWorkplace');
     }
 }

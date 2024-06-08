@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm px-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm ps-4 pe-5">
         <component :is="isUserLogged ? 'router-link' : 'span'"
             to="/"
             class="navbar-brand p-0"
@@ -14,21 +14,11 @@
 
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
+                <li v-if="isUserLogged" class="nav-item">
+                    <router-link to="/" class="nav-link">Головна сторінка</router-link>
                 </li>
             </ul>
+
             <div v-if="isUserLogged" class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarUserDropdown" role="button" data-bs-toggle="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ getUserName }}

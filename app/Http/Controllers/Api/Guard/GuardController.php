@@ -70,4 +70,10 @@ class GuardController extends ApiController
         return response()->json([], Response::HTTP_NO_CONTENT);
     }
 
+    public function getUnits(): JsonResponse
+    {
+        $data = $this->guardService->getUnits();
+
+        return response()->json($data);
+    }
 }

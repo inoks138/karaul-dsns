@@ -2,6 +2,7 @@
 
 namespace App\Models\Workplace;
 
+use App\Models\Emergency\Emergency;
 use App\Models\Employee\Employee;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -24,6 +25,11 @@ class Headquarter extends Model
     public function employees(): MorphMany
     {
         return $this->morphMany(Employee::class, 'workplace');
+    }
+
+    public function emergencies(): MorphMany
+    {
+        return $this->morphMany(Emergency::class, 'reporterWorkplace');
     }
 
     public static function getIdByOblast(string $oblast): ?int
