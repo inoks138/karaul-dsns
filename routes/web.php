@@ -22,6 +22,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::view('/guard/start', 'app');
     Route::view('/guard/create-units', 'app');
+    Route::view('/guard/create-vehicle-repair-request', 'app');
     Route::view('/guard/create-vehicle-notes', 'app');
     Route::view('/guard/end', 'app');
 

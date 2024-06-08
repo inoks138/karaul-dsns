@@ -24,6 +24,13 @@
                         Створити відділення
                     </v-button>
                     <v-button
+                        to="/guard/create-vehicle-repair-request"
+                        class="w-100 mt-2"
+                        color="primary"
+                    >
+                        Створити запит на ремонт ТЗ
+                    </v-button>
+                    <v-button
                         to="/guard/create-vehicle-notes"
                         class="w-100 mt-2"
                         color="primary"
