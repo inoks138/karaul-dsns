@@ -58,7 +58,7 @@ class Emergency extends Model
         return $this->hasMany(EmergencyComment::class, 'emergency_id', 'id');
     }
 
-    public static function getReporterWorkplaceNameByType(string $type): string
+    public static function getWorkplaceNameByType(string $type): string
     {
         if ($type === Firehouse::class) {
             return 'ДПРЧ';

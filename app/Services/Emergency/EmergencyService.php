@@ -40,7 +40,7 @@ class EmergencyService
             ->get()
             ->map(function ($item) {
                 $item->workplace_name =
-                    Emergency::getReporterWorkplaceNameByType($item->reporter_workplace_type) . '-' . $item->reporterWorkplace->number;
+                    Emergency::getWorkplaceNameByType($item->reporter_workplace_type) . '-' . $item->reporterWorkplace->number;
 
                 return $item;
             });
@@ -105,6 +105,10 @@ class EmergencyService
         return $emergency;
     }
 
+    public function requestAdditionalUnits(Emergency $emergency, array $data): void
+    {
+
+    }
     public function getComments(Emergency $emergency): Collection
     {
         return EmergencyComment::query()
@@ -143,6 +147,6 @@ class EmergencyService
         ]);
 
         $emergency->workplace_name =
-            Emergency::getReporterWorkplaceNameByType($emergency->reporter_workplace_type) . '-' . $emergency->reporterWorkplace->number;
+            Emergency::getWorkplaceNameByType($emergency->reporter_workplace_type) . '-' . $emergency->reporterWorkplace->number;
     }
 }

@@ -15,7 +15,6 @@ class GuardReport extends Model
         'dispatcher_id',
         'vacation_employees_count',
         'sick_employees_count',
-
         'business_trip_employees_count',
         'stock_employees_count',
         'service_inspection',
